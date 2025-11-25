@@ -5,11 +5,11 @@
 layout: one
 ---
 
-![Alt page 1](images/1.PNG)
-![Alt page 1](images/2.PNG)
-![Alt page 1](images/3.PNG)
-![Alt page 1](images/4.PNG)
-<img src="images/5.PNG" alt="content me" usemap="#image-map">
+<img src="images/1.PNG" class="img-fluid" alt="home" usemap="#image-map">
+<img src="images/2.PNG" class="img-fluid" alt="about us" usemap="#image-map">
+<img src="images/3.PNG" class="img-fluid" alt="core service" usemap="#image-map">
+<img src="images/4.PNG" class="img-fluid" alt="cases" usemap="#image-map">
+<img src="images/5.PNG" class="img-fluid" alt="content me" usemap="#image-map">
 
 <map name="image-map">
     <area target="_blank" alt="mail" title="mail" href="mailto:service@muxu.com.tw" coords="570,401,712,381" shape="rect">
