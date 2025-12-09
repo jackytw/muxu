@@ -1,31 +1,553 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>沐旭科技有限公司 | 智能驅動・數位領航</title>
+    <meta name="description" content="沐旭科技有限公司專注於人工智慧技術顧問與數位轉型服務，提供客製化解決方案協助企業優化營運。">
 
-    <title>沐旭科技 | 智能驅動，數位領航</title>
-    <meta name="description" content="人工智慧、大數據、雲端運算、物聯網技術研發與系統整合應用">
-  </head>
-  <body>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Inter:wght@400;600&display=swap"
+        rel="stylesheet">
 
-    <div class="container-sm">
-      {{ content }}
-    </div>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <!-- Optional JavaScript; choose one of the two! -->
+    <!-- Tailwind CSS (透過 CDN 引入，實作中建議使用建置工具) -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        muxu: {
+                            dark: '#0b1120',
+                            primary: '#0f172a',
+                            secondary: '#1e293b',
+                            accent: '#38bdf8', // Sky 400
+                            highlight: '#0ea5e9', // Sky 500
+                            text: '#f8fafc',
+                            muted: '#94a3b8'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans TC', 'Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
 
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    -->
-  </body>
+    <style>
+        /* 自定義樣式補充 */
+        body {
+            background-color: #0b1120;
+            color: #f8fafc;
+        }
+
+        .hero-bg {
+            background-image: linear-gradient(rgba(11, 17, 32, 0.7), rgba(11, 17, 32, 0.8)), url('http://googleusercontent.com/image_collection/image_retrieval/1091293117159466995');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            /* 視差滾動效果 */
+        }
+
+        .section-padding {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+
+        /* 隱藏滾動條但保留功能 (Optional) */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #38bdf8;
+        }
+    </style>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-111JWF4BJ9"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-111JWF4BJ9');
+</script>
+
+<body class="font-sans antialiased selection:bg-muxu-accent selection:text-muxu-dark">
+
+    <!-- Navigation -->
+    <nav id="navbar"
+        class="fixed w-full z-50 transition-all duration-300 bg-opacity-90 backdrop-blur-md bg-muxu-primary border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <div
+                        class="w-10 h-10 bg-muxu-accent rounded-lg flex items-center justify-center text-muxu-dark font-bold text-xl">
+                        M</div>
+                    <span class="font-bold text-xl tracking-wider text-white">沐旭科技</span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#about"
+                            class="hover:text-muxu-accent transition-colors px-3 py-2 rounded-md text-sm font-medium">關於我們</a>
+                        <a href="#services"
+                            class="hover:text-muxu-accent transition-colors px-3 py-2 rounded-md text-sm font-medium">核心服務</a>
+                        <a href="#process"
+                            class="hover:text-muxu-accent transition-colors px-3 py-2 rounded-md text-sm font-medium">轉型流程</a>
+                        <a href="#cases"
+                            class="hover:text-muxu-accent transition-colors px-3 py-2 rounded-md text-sm font-medium">成功案例</a>
+                        <a href="#contact"
+                            class="bg-muxu-accent text-muxu-dark hover:bg-muxu-highlight px-4 py-2 rounded-full text-sm font-bold transition-colors">聯絡我們</a>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="-mr-2 flex md:hidden">
+                    <button id="mobile-menu-btn" type="button"
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-muxu-secondary border-b border-gray-700">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" class="block hover:bg-gray-700 px-3 py-2 rounded-md text-base font-medium">關於我們</a>
+                <a href="#services" class="block hover:bg-gray-700 px-3 py-2 rounded-md text-base font-medium">核心服務</a>
+                <a href="#process" class="block hover:bg-gray-700 px-3 py-2 rounded-md text-base font-medium">轉型流程</a>
+                <a href="#cases" class="block hover:bg-gray-700 px-3 py-2 rounded-md text-base font-medium">成功案例</a>
+                <a href="#contact" class="block text-muxu-accent font-bold px-3 py-2 rounded-md text-base">聯絡我們</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative h-screen flex items-center justify-center hero-bg text-center px-4">
+        <div class="relative z-10 max-w-4xl mx-auto" data-aos="fade-up">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tight leading-tight">
+                智能驅動 <span class="text-muxu-accent">數位領航</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 mb-10 max-w-2xl mx-auto font-light">
+                以科技創新為核心，提供簡潔高效的企業數位轉型解決方案
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#services"
+                    class="px-8 py-4 bg-muxu-accent text-muxu-dark rounded-full font-bold text-lg hover:bg-muxu-highlight transition duration-300 shadow-lg shadow-muxu-accent/20">
+                    探索服務
+                </a>
+                <a href="#contact"
+                    class="px-8 py-4 border border-gray-500 hover:border-white hover:text-white text-gray-300 rounded-full font-bold text-lg transition duration-300 bg-muxu-dark/50 backdrop-blur-sm">
+                    諮詢專家
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll Down Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#about" class="text-gray-400 hover:text-white">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="section-padding bg-muxu-primary">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="order-2 md:order-1 relative group">
+                    <div
+                        class="absolute -inset-1 bg-gradient-to-r from-muxu-accent to-blue-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200">
+                    </div>
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/10378198582690518044"
+                        alt="About Muxu Tech"
+                        class="relative rounded-2xl shadow-2xl w-full object-cover h-[400px] grayscale group-hover:grayscale-0 transition duration-500"
+                        onerror="this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'">
+                </div>
+                <div class="order-1 md:order-2">
+                    <h2 class="text-muxu-accent font-bold tracking-wide uppercase text-sm mb-2">關於我們 About Us</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold mb-6 text-white">致力成為企業數位轉型的<br>關鍵策略夥伴</h3>
+                    <p class="text-gray-400 text-lg leading-relaxed mb-6">
+                        沐旭科技深知在快速變遷的科技時代，企業需要透過創新技術來提升競爭力。我們專注於提供尖端的人工智慧技術顧問服務，協助企業優化營運流程、洞察市場先機，實現企業的永續卓越成長。
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-muxu-accent mt-1 mr-3"></i>
+                            <span class="text-gray-300">提供尖端的人工智慧技術顧問服務</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-muxu-accent mt-1 mr-3"></i>
+                            <span class="text-gray-300">協助企業優化營運流程、洞察市場先機</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-muxu-accent mt-1 mr-3"></i>
+                            <span class="text-gray-300">實現企業的永續卓越成長</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section-padding bg-muxu-secondary relative overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-muxu-accent/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-blue-600/5 rounded-full blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-muxu-accent font-bold tracking-wide uppercase text-sm mb-2">核心服務 Core Services</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-white">全方位的技術解決方案</h3>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div
+                    class="bg-muxu-primary p-8 rounded-2xl border border-gray-800 hover:border-muxu-accent transition duration-300 hover:transform hover:-translate-y-2 group">
+                    <div
+                        class="w-14 h-14 bg-blue-900/50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-muxu-accent transition duration-300">
+                        <i class="fa-solid fa-brain text-2xl text-muxu-accent group-hover:text-muxu-dark"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4 text-white">人工智慧技術顧問</h4>
+                    <p class="text-gray-400 mb-6">協助企業有效導入及運用 AI 技術，提升決策品質並創造新商業價值。</p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li>• AI 導入評估與策略規劃</li>
+                        <li>• 數據分析與洞察</li>
+                        <li>• 機器學習模型建置</li>
+                    </ul>
+                </div>
+
+                <!-- Service 2 -->
+                <div
+                    class="bg-muxu-primary p-8 rounded-2xl border border-gray-800 hover:border-muxu-accent transition duration-300 hover:transform hover:-translate-y-2 group">
+                    <div
+                        class="w-14 h-14 bg-blue-900/50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-muxu-accent transition duration-300">
+                        <i class="fa-solid fa-laptop-code text-2xl text-muxu-accent group-hover:text-muxu-dark"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4 text-white">資訊化數位技術服務</h4>
+                    <p class="text-gray-400 mb-6">從基礎數位化到深度轉型，利用數位技術改善經營型態與營運效率。</p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li>• 雲端整合服務</li>
+                        <li>• 物聯網 (IoT) 解決方案</li>
+                        <li>• 商業流程自動化</li>
+                    </ul>
+                </div>
+
+                <!-- Service 3 -->
+                <div
+                    class="bg-muxu-primary p-8 rounded-2xl border border-gray-800 hover:border-muxu-accent transition duration-300 hover:transform hover:-translate-y-2 group">
+                    <div
+                        class="w-14 h-14 bg-blue-900/50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-muxu-accent transition duration-300">
+                        <i class="fa-solid fa-puzzle-piece text-2xl text-muxu-accent group-hover:text-muxu-dark"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4 text-white">客製化解決方案</h4>
+                    <p class="text-gray-400 mb-6">針對不同產業需求，提供非標準化的專業技術服務，賦能企業脫穎而出。</p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li>• 跨平台軟體開發</li>
+                        <li>• 產業專屬應用</li>
+                        <li>• 系統整合與維運</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Digital Transformation Process (Steps) -->
+    <section id="process" class="section-padding bg-muxu-primary">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">數位轉型三階段</h2>
+                <p class="text-gray-400">循序漸進，為您的企業注入數位基因</p>
+            </div>
+
+            <div class="relative">
+                <!-- Connecting Line (Desktop) -->
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-gray-800 -translate-y-1/2 z-0">
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8 relative z-10">
+                    <!-- Step 1 -->
+                    <div
+                        class="bg-muxu-secondary p-8 rounded-xl border border-gray-700 text-center relative hover:border-muxu-accent transition duration-300">
+                        <div
+                            class="w-12 h-12 bg-muxu-accent text-muxu-dark rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-6 border-4 border-muxu-secondary">
+                            1</div>
+                        <h3 class="text-xl font-bold text-white mb-2">數位化</h3>
+                        <p class="text-sm text-muxu-accent mb-4">Digitization</p>
+                        <p class="text-gray-400">將類比資訊轉換為數位格式，建立基礎數據庫，為數據分析奠定基礎。</p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div
+                        class="bg-muxu-secondary p-8 rounded-xl border border-gray-700 text-center relative hover:border-muxu-accent transition duration-300">
+                        <div
+                            class="w-12 h-12 bg-muxu-accent text-muxu-dark rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-6 border-4 border-muxu-secondary">
+                            2</div>
+                        <h3 class="text-xl font-bold text-white mb-2">數位優化</h3>
+                        <p class="text-sm text-muxu-accent mb-4">Digital Optimization</p>
+                        <p class="text-gray-400">優化現有流程，提升數據可用性與營運效率，減少不必要的人力成本。</p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div
+                        class="bg-muxu-secondary p-8 rounded-xl border border-gray-700 text-center relative hover:border-muxu-accent transition duration-300">
+                        <div
+                            class="w-12 h-12 bg-muxu-accent text-muxu-dark rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-6 border-4 border-muxu-secondary">
+                            3</div>
+                        <h3 class="text-xl font-bold text-white mb-2">智慧轉型</h3>
+                        <p class="text-sm text-muxu-accent mb-4">Smart Transformation</p>
+                        <p class="text-gray-400">利用人工智慧技術創造全新商業模式與價值主張，重塑企業核心競爭力。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advantages -->
+    <section id="advantages" class="section-padding bg-muxu-secondary">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl border border-gray-700">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center">
+                            <i class="fa-solid fa-users-gear text-2xl text-blue-400"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">專業團隊</h3>
+                    </div>
+                    <ul class="space-y-4 text-gray-300">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-400 mt-1.5 mr-3 text-sm"></i>
+                            <span>匯聚豐富產業經驗與跨領域技術專家。</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-400 mt-1.5 mr-3 text-sm"></i>
+                            <span>具備機器學習、深度學習等深厚專業知識。</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-400 mt-1.5 mr-3 text-sm"></i>
+                            <span>擁有將技術應用於各行各業的實戰經驗。</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl border border-gray-700">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 rounded-full bg-cyan-500/20 flex items-center justify-center">
+                            <i class="fa-solid fa-microchip text-2xl text-cyan-400"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">技術創新</h3>
+                    </div>
+                    <ul class="space-y-4 text-gray-300">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-cyan-400 mt-1.5 mr-3 text-sm"></i>
+                            <span>始終走在科技創新的最前沿。</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-cyan-400 mt-1.5 mr-3 text-sm"></i>
+                            <span>整合 AI、雲端運算、物聯網等前瞻技術。</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-cyan-400 mt-1.5 mr-3 text-sm"></i>
+                            <span>打造高效、穩定且具未來性的解決方案。</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cases Section -->
+    <section id="cases" class="section-padding bg-muxu-primary">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-muxu-accent font-bold tracking-wide uppercase text-sm mb-2">成功案例 Success Cases</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-white">技術落地，創造價值</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Case 1 -->
+                <div class="group relative overflow-hidden rounded-xl bg-gray-800">
+                    <img src="/images/promag.png" alt="非破壞檢測"
+                        class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500 opacity-80 group-hover:opacity-100"
+                        onerror="this.src='https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90">
+                    </div>
+                    <div class="absolute bottom-0 left-0 p-6">
+                        <h4 class="text-lg font-bold text-white mb-1">汽車車材</h4>
+                        <p class="text-muxu-accent text-sm">非破壞檢測</p>
+                    </div>
+                </div>
+
+                <!-- Case 2 -->
+                <div class="group relative overflow-hidden rounded-xl bg-gray-800">
+                    <img src="/images/drug.jpg" alt="AI圖像識別"
+                        class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500 opacity-80 group-hover:opacity-100"
+                        onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90">
+                    </div>
+                    <div class="absolute bottom-0 left-0 p-6">
+                        <h4 class="text-lg font-bold text-white mb-1">AI 圖像識別</h4>
+                        <p class="text-muxu-accent text-sm">毒品快搜平台</p>
+                    </div>
+                </div>
+
+                <!-- Case 3 -->
+                <div class="group relative overflow-hidden rounded-xl bg-gray-800">
+                    <img src="/images/orchid.jpg" alt="智慧農業"
+                        class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500 opacity-80 group-hover:opacity-100"
+                        onerror="this.src='https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90">
+                    </div>
+                    <div class="absolute bottom-0 left-0 p-6">
+                        <h4 class="text-lg font-bold text-white mb-1">智慧農業</h4>
+                        <p class="text-muxu-accent text-sm">蝴蝶蘭品種權管理</p>
+                    </div>
+                </div>
+
+                <!-- Case 4 -->
+                <div class="group relative overflow-hidden rounded-xl bg-gray-800">
+                    <img src="/images/energy.png" alt="能源管理"
+                        class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500 opacity-80 group-hover:opacity-100"
+                        onerror="this.src='https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90">
+                    </div>
+                    <div class="absolute bottom-0 left-0 p-6">
+                        <h4 class="text-lg font-bold text-white mb-1">能源管理</h4>
+                        <p class="text-muxu-accent text-sm">工業廠區用電預測</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding bg-gradient-to-b from-muxu-secondary to-muxu-dark">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-8">準備好開始您的數位轉型之旅了嗎？</h2>
+            <p class="text-xl text-gray-300 mb-12">期待成為您數位轉型路上最值得信賴的夥伴，共創輝煌的數位未來。</p>
+
+            <div
+                class="bg-muxu-primary p-8 rounded-2xl border border-gray-800 shadow-2xl flex flex-col md:flex-row justify-around items-center gap-8">
+                <div class="flex flex-col items-center gap-3">
+                    <div
+                        class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-muxu-accent text-xl">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <span class="text-gray-300">(02) 6609-3166</span>
+                </div>
+
+                <div class="flex flex-col items-center gap-3">
+                    <div
+                        class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-muxu-accent text-xl">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <span class="text-gray-300">sales@muxu.com.tw</span>
+                </div>
+
+                <div class="flex flex-col items-center gap-3">
+                    <div
+                        class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-muxu-accent text-xl">
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+                    <span class="text-gray-300">www.muxu.com.tw</span>
+                </div>
+
+                <div class="flex flex-col items-center gap-3">
+                    <div
+                        class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-muxu-accent text-xl">
+                        <i class="fa-solid fa-link"></i>
+                    </div>
+                    <span class="text-gray-300"><a href="https://lin.ee/pWGID3I">沐旭科技Line@官方帳號</a></span>
+                </div>
+            </div>
+
+            <!-- Simple Form -->
+            <form class="mt-12 max-w-lg mx-auto space-y-4 text-left" action="mailto:salse@muxu.com.tw" method="post"
+                enctype="text/plain">
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-400 mb-1">聯絡信箱</label>
+                    <input type="email" id="email"
+                        class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-muxu-accent transition"
+                        placeholder="your@email.com">
+                </div>
+                <div>
+                    <label for="message" class="block text-sm font-medium text-gray-400 mb-1">諮詢內容</label>
+                    <textarea id="message" rows="4"
+                        class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-muxu-accent transition"
+                        placeholder="請告訴我們您的需求..."></textarea>
+                </div>
+                <button type="submit"
+                    class="w-full bg-muxu-accent text-muxu-dark font-bold py-3 rounded-lg hover:bg-muxu-highlight transition duration-300">
+                    發送訊息
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-8 border-t border-gray-900">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-gray-500 text-sm">
+                &copy; 2025 沐旭科技有限公司 Muxu Technology Co., Ltd. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-lg');
+                navbar.classList.replace('bg-opacity-90', 'bg-opacity-100');
+            } else {
+                navbar.classList.remove('shadow-lg');
+                navbar.classList.replace('bg-opacity-100', 'bg-opacity-90');
+            }
+        });
+    </script>
+</body>
+
 </html>

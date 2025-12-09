@@ -1,18 +1,9 @@
 ---
 layout: page
-title: About
+title: 關於
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+# 沐旭科技深知在快速變遷的科技時代，企業需要透過創新技術來提升競爭力。我們專注於提供尖端的人工智慧技術顧問服務，協助企業優化營運流程、洞察市場先機，落實智慧轉型，實現企業的永續卓越成長。
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
-
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
-
-
-[jekyll-organization]: https://github.com/jekyll
+## [回首頁](/)
