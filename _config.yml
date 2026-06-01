@@ -18,14 +18,23 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: 沐旭科技 | 智能驅動，數位領航
+title: 沐旭科技有限公司
+tagline: 智能驅動・數位領航
 email: service@muxu.com.tw
 description: >- # this means to ignore newlines until "baseurl:"
-  人工智慧、大數據、雲端運算、物聯網技術研發與系統整合應用
+  沐旭科技專注於人工智慧應用，提供 AI 落地技術顧問、數位轉型、資料分析與視覺化服務，協助企業優化營運與決策。
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
-github_username:  jekyll
+url: "https://www.muxu.com.tw" # the base hostname & protocol for your site
+
+# SEO 與社群分享（jekyll-seo-tag 使用）
+logo: /images/1.PNG   # TODO: 建議改為正式公司 logo
+lang: zh-TW
+twitter:
+  card: summary_large_image
+social:
+  name: 沐旭科技有限公司
+  links:
+    - https://www.muxu.com.tw
 
 # Build settings
 theme: minima
