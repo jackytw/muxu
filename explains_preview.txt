@@ -1,0 +1,16 @@
+﻿python : Traceback (most recent call last):
+At line:2 char:1
++ python -c "
++ ~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Traceback (most recent call last)::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  File "<string>", line 7, in <module>
+    print(v[:200])
+    ~~~~~^^^^^^^^^
+UnicodeEncodeError: 'cp950' codec can't encode character '\u026c' in position 47: illegal multibyte sequence
+�@ 59 ��
+[://gomicrosoftcom/fwlink/LinkId144505)�CMicrosoft �����A��: ���� S4U2Self �H���o�ŧi��T]
+���w���ʳ]�w�O���F�䴩���� Windows 8 ���e�� Windows �����B���զs���ݭn�ϥΪ̫ŧi���ɮצ@�Ϊ��Τ�ݡC���]�w�|�M�w�����ɮצ��A���O�_�N���ըϥ� Kerberos Service-For-User-To-Self (S4U2Self) �\��A�H�q�Τ�ݪ��b������o���Τ�ݥD�骺�ŧi�C�u���b�ɮצ��A���ϥΨϥΪ̫ŧi�ӱ����ɮת��s���v�A�H�Φp�G�ɮצ��A���N�䴩���Τ�ݥD��A��b��i
+---
+[J���s��: �i�H�ΦW�s������W�޹D]
