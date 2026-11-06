@@ -2,666 +2,659 @@
 <html lang="zh-TW" class="scroll-smooth">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- SEO：標題、description、canonical、Open Graph、Twitter Card 由 jekyll-seo-tag 產生（內容統一於 _config.yml） -->
-    {% seo %}
-
-    <!-- 公司結構化資料 -->
+    {% include head.html %}
+    <!-- 易派遣軟體產品結構化資料 -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "沐旭科技有限公司",
-        "url": "{{ site.url }}",
-        "email": "{{ site.email }}",
-        "description": "{{ site.description }}",
-        "logo": "{{ site.url }}{{ site.logo }}"
+        "@type": "SoftwareApplication",
+        "name": "易派遣 EasyDispatch",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web, iOS, Android, Windows, macOS",
+        "offers": {
+            "@type": "Offer",
+            "price": "Contact for quotation",
+            "priceCurrency": "TWD"
+        },
+        "description": "整合工單、人員指派、現場作業紀錄、照片與主管報表，提供可客製化、地端部署與雲端獨立部署之專業工單管理解決方案。",
+        "author": {
+            "@type": "Organization",
+            "name": "沐旭科技有限公司",
+            "url": "{{ site.url }}"
+        }
     }
     </script>
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Inter:wght@400;600&display=swap"
-        rel="stylesheet">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <!-- Tailwind CSS (透過 CDN 引入，實作中建議使用建置工具) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Tailwind Configuration -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        muxu: {
-                            dark: '#0b1120',
-                            primary: '#0f172a',
-                            secondary: '#1e293b',
-                            accent: '#38bdf8', // Sky 400
-                            highlight: '#0ea5e9', // Sky 500
-                            text: '#f8fafc',
-                            muted: '#94a3b8'
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Noto Sans TC', 'Inter', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-
-    <style>
-        /* 自定義樣式補充 */
-        body {
-            background-color: #0b1120;
-            color: #f8fafc;
-        }
-
-        .hero-bg {
-            background-image: linear-gradient(rgba(11, 17, 32, 0.7), rgba(11, 17, 32, 0.8)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            /* 視差滾動效果 */
-        }
-
-        .section-padding {
-            padding-top: 5rem;
-            padding-bottom: 5rem;
-        }
-
-        /* 隱藏滾動條但保留功能 (Optional) */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #0f172a;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #334155;
-            border-radius: 5px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #38bdf8;
-        }
-    </style>
 </head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-111JWF4BJ9"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-
     gtag('config', 'G-111JWF4BJ9');
 </script>
 
 <body class="font-sans antialiased selection:bg-muxu-accent selection:text-muxu-dark">
 
-    <!-- Navigation -->
-    <nav id="navbar"
-        class="fixed w-full z-50 transition-all duration-300 bg-opacity-90 backdrop-blur-md bg-muxu-primary border-b border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
-                    <div
-                        class="w-10 h-10 bg-muxu-accent rounded-lg flex items-center justify-center text-muxu-dark font-bold text-xl">
-                        M</div>
-                    <span class="font-bold text-xl tracking-wider text-white">沐旭科技</span>
+    {% include navbar.html %}
+
+    <!-- Hero Section: 易派遣產品主廣告 -->
+    <header class="relative pt-36 pb-20 md:pt-44 md:pb-28 hero-pattern overflow-hidden border-b border-gray-800">
+        <!-- 頂部漸層光暈 -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-sky-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-4xl mx-auto">
+                <!-- 標籤 -->
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/30 text-sky-400 text-sm font-semibold mb-6 shadow-sm">
+                    <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
+                    <span>現場作業與派工管理專用 ‧ 支援客製化與獨立部署</span>
                 </div>
 
-                <!-- Desktop Menu -->
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#about"
-                            class="hover:text-muxu-accent transition-colors px-3 py-2 rounded-md text-sm font-medium">關於我們</a>
-                        <a href="#services"
-                            class="hover:text-muxu-accent transition-colors px-3 py-2 rounded-md text-sm font-medium">核心服務</a>
-                        <a href="#process"
-                            class="hover:text-muxu-accent transition-colors px-3 py-2 rounded-md text-sm font-medium">轉型流程</a>
-                        <a href="#cases"
-                            class="hover:text-muxu-accent transition-colors px-3 py-2 rounded-md text-sm font-medium">成功案例</a>
-                        <a href="#download"
-                            class="hover:text-muxu-accent transition-colors px-3 py-2 rounded-md text-sm font-medium">免費軟體下載</a>
-                        <a href="#contact"
-                            class="bg-muxu-accent text-muxu-dark hover:bg-muxu-highlight px-4 py-2 rounded-full text-sm font-bold transition-colors">聯絡我們</a>
+                <!-- 主標題 -->
+                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 tracking-tight text-white leading-tight">
+                    易派遣 <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-cyan-300 to-blue-500">EasyDispatch</span>
+                </h1>
+
+                <!-- 核心 Slogan -->
+                <p class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-100 mb-6">
+                    把工作安排、現場紀錄與正式報表放在同一套流程中
+                </p>
+
+                <!-- 說明描述 -->
+                <p class="text-base sm:text-lg md:text-xl text-gray-400 mb-10 max-w-3xl mx-auto leading-relaxed">
+                    整合工單派工、人員指派、現場作業紀錄、多張照片佐證與主管正式報表。現場人員與辦公室使用同一份案件資料，支援企業範本 Word / PDF 雙欄排版一鍵匯出，並可自由選擇部署於企業自有環境或專屬獨立雲端。
+                </p>
+
+                <!-- 行動按鈕 -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-14">
+                    <a href="#contact"
+                        class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-sky-400 to-blue-500 text-slate-950 rounded-xl font-bold text-lg hover:from-sky-300 hover:to-blue-400 transition-all shadow-lg shadow-sky-500/25 flex items-center justify-center gap-2 group">
+                        <i class="fa-solid fa-calendar-check text-xl group-hover:scale-110 transition-transform"></i>
+                        <span>預約展示與需求訪談</span>
+                    </a>
+                    <a href="#features"
+                        class="w-full sm:w-auto px-8 py-4 bg-slate-900 hover:bg-slate-800 text-gray-200 border border-slate-700 hover:border-sky-400/50 rounded-xl font-semibold text-lg transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-list-check text-sky-400"></i>
+                        <span>探索核心功能</span>
+                    </a>
+                </div>
+
+                <!-- 信任特色指標 -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-left max-w-4xl mx-auto pt-6 border-t border-slate-800/80">
+                    <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-800">
+                        <i class="fa-solid fa-folder-tree text-sky-400 text-xl"></i>
+                        <div class="text-xs sm:text-sm">
+                            <div class="text-white font-bold">工單集中管理</div>
+                            <div class="text-gray-400">一案整合進度與人員</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-800">
+                        <i class="fa-solid fa-file-word text-blue-400 text-xl"></i>
+                        <div class="text-xs sm:text-sm">
+                            <div class="text-white font-bold">Word / PDF 報表</div>
+                            <div class="text-gray-400">照片雙欄自動排版</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-800">
+                        <i class="fa-solid fa-sliders text-teal-400 text-xl"></i>
+                        <div class="text-xs sm:text-sm">
+                            <div class="text-white font-bold">流程彈性客製</div>
+                            <div class="text-gray-400">配合既有表單與簽核</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-800">
+                        <i class="fa-solid fa-shield-halved text-emerald-400 text-xl"></i>
+                        <div class="text-xs sm:text-sm">
+                            <div class="text-white font-bold">專屬獨立部署</div>
+                            <div class="text-gray-400">地端/雲端邊界隔離</div>
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Mobile menu button -->
-                <div class="-mr-2 flex md:hidden">
-                    <button id="mobile-menu-btn" type="button"
-                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
-                        <span class="sr-only">Open main menu</span>
-                        <i class="fas fa-bars text-2xl"></i>
-                    </button>
+            <!-- 產品介面展示預覽圖 -->
+            <div class="mt-16 max-w-5xl mx-auto">
+                <div class="gradient-border shadow-2xl">
+                    <div class="gradient-border-content p-2 sm:p-4 overflow-hidden">
+                        <div class="bg-slate-950 rounded-lg overflow-hidden border border-slate-800">
+                            <!-- 模擬瀏覽器標題列 -->
+                            <div class="bg-slate-900 px-4 py-3 flex items-center justify-between border-b border-slate-800">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
+                                    <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
+                                    <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+                                    <span class="text-xs text-gray-400 ml-2 font-mono">易派遣 EasyDispatch 現場作業管理系統</span>
+                                </div>
+                                <div class="text-xs text-sky-400 font-mono hidden sm:block">
+                                    <i class="fa-solid fa-lock mr-1"></i> 獨立安全邊界 ‧ 角色權限嚴密防護
+                                </div>
+                            </div>
+                            <!-- 圖片區 -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-slate-950">
+                                <div class="space-y-2">
+                                    <div class="text-xs font-semibold text-gray-400 flex items-center gap-1.5">
+                                        <i class="fa-solid fa-mobile-screen text-sky-400"></i> 現場作業、指派人員與多圖回傳
+                                    </div>
+                                    <img src="/images/epatch/epatch_workflow.jpg" alt="易派遣現場工單指派與作業回報系統流程" loading="lazy" decoding="async" width="640" height="360"
+                                        class="rounded-lg w-full h-72 object-cover object-top border border-slate-800 hover:border-sky-500/50 transition-colors shadow-md"
+                                        onerror="this.src='/images/epatch/epatch_hero.png'">
+                                </div>
+                                <div class="space-y-2">
+                                    <div class="text-xs font-semibold text-gray-400 flex items-center gap-1.5">
+                                        <i class="fa-solid fa-file-invoice text-emerald-400"></i> 主管依範本一鍵輸出 Word / PDF 正式報表（照片雙欄排列）
+                                    </div>
+                                    <img src="/images/epatch/epatch_report_preview.png" alt="易派遣主管報表預覽 - 一鍵產出Word與PDF正式報表照片雙欄排版" loading="lazy" decoding="async" width="640" height="360"
+                                        class="rounded-lg w-full h-72 object-cover object-top border border-slate-800 hover:border-emerald-500/50 transition-colors shadow-md"
+                                        onerror="this.src='/images/epatch/epatch_hero.png'">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Mobile Menu Panel -->
-        <div id="mobile-menu" class="hidden md:hidden bg-muxu-secondary border-b border-gray-700">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#about" class="block hover:bg-gray-700 px-3 py-2 rounded-md text-base font-medium">關於我們</a>
-                <a href="#services" class="block hover:bg-gray-700 px-3 py-2 rounded-md text-base font-medium">核心服務</a>
-                <a href="#process" class="block hover:bg-gray-700 px-3 py-2 rounded-md text-base font-medium">轉型流程</a>
-                <a href="#cases" class="block hover:bg-gray-700 px-3 py-2 rounded-md text-base font-medium">成功案例</a>
-                <a href="#download" class="block hover:bg-gray-700 px-3 py-2 rounded-md text-base font-medium">免費軟體下載</a>
-                <a href="#contact" class="block text-muxu-accent font-bold px-3 py-2 rounded-md text-base">聯絡我們</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <header class="relative h-screen flex items-center justify-center hero-bg text-center px-4">
-        <div class="relative z-10 max-w-4xl mx-auto">
-            <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tight leading-tight">
-                智能驅動 <span class="text-muxu-accent">數位領航</span>
-            </h1>
-            <p class="text-xl md:text-2xl text-gray-300 mb-10 max-w-2xl mx-auto font-light">
-                以科技創新為核心，提供簡潔高效的企業數位轉型解決方案
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#services"
-                    class="px-8 py-4 bg-muxu-accent text-muxu-dark rounded-full font-bold text-lg hover:bg-muxu-highlight transition duration-300 shadow-lg shadow-muxu-accent/20">
-                    探索服務
-                </a>
-                <a href="#contact"
-                    class="px-8 py-4 border border-gray-500 hover:border-white hover:text-white text-gray-300 rounded-full font-bold text-lg transition duration-300 bg-muxu-dark/50 backdrop-blur-sm">
-                    諮詢專家
-                </a>
-            </div>
-        </div>
-
-        <!-- Scroll Down Indicator -->
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <a href="#about" class="text-gray-400 hover:text-white">
-                <i class="fas fa-chevron-down text-2xl"></i>
-            </a>
         </div>
     </header>
 
-    <!-- About Section -->
-    <section id="about" class="section-padding bg-muxu-primary">
+    <!-- 對客戶的核心價值 Section -->
+    <section class="section-padding bg-muxu-primary">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="order-2 md:order-1 relative group">
-                    <div
-                        class="absolute -inset-1 bg-gradient-to-r from-muxu-accent to-blue-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200">
-                    </div>
-                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                        alt="About Muxu Tech"
-                        class="relative rounded-2xl shadow-2xl w-full object-cover h-[400px] grayscale group-hover:grayscale-0 transition duration-500"
-                        onerror="this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'">
-                </div>
-                <div class="order-1 md:order-2">
-                    <h2 class="text-muxu-accent font-bold tracking-wide uppercase text-sm mb-2">關於我們 About Us</h2>
-                    <h3 class="text-3xl md:text-4xl font-bold mb-6 text-white">致力成為企業數位轉型的<br>關鍵策略夥伴</h3>
-                    <p class="text-gray-400 text-lg leading-relaxed mb-6">
-                        沐旭科技深知在快速變遷的科技時代，企業需要透過創新技術來提升競爭力。我們專注於提供尖端的人工智慧技術顧問服務，協助企業優化營運流程、洞察市場先機，實現企業的永續卓越成長。
-                    </p>
-                    <ul class="space-y-4">
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-muxu-accent mt-1 mr-3"></i>
-                            <span class="text-gray-300">提供尖端的人工智慧技術顧問服務</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-muxu-accent mt-1 mr-3"></i>
-                            <span class="text-gray-300">協助企業優化營運流程、洞察市場先機</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-muxu-accent mt-1 mr-3"></i>
-                            <span class="text-gray-300">實現企業的永續卓越成長</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="section-padding bg-muxu-secondary relative overflow-hidden">
-        <!-- Background Elements -->
-        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-muxu-accent/5 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-blue-600/5 rounded-full blur-3xl"></div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16">
-                <h2 class="text-muxu-accent font-bold tracking-wide uppercase text-sm mb-2">核心服務 Core Services</h2>
-                <h3 class="text-3xl md:text-4xl font-bold text-white">全方位的技術解決方案</h3>
+                <span class="text-sky-400 font-bold tracking-wide uppercase text-sm mb-2 block">Core Values</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">為什麼企業選擇「易派遣」？</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">告別通訊軟體雜亂交接與手動拼貼報表的痛點，以標準化流程建立可追溯、可稽核的現場管理體系。</p>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Service 1 -->
-                <div
-                    class="bg-muxu-primary p-8 rounded-2xl border border-gray-800 hover:border-muxu-accent transition duration-300 hover:transform hover:-translate-y-2 group">
-                    <div
-                        class="w-14 h-14 bg-blue-900/50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-muxu-accent transition duration-300">
-                        <i class="fa-solid fa-brain text-2xl text-muxu-accent group-hover:text-muxu-dark"></i>
+                <!-- 價值 1 -->
+                <div class="bg-muxu-secondary p-8 rounded-2xl border border-gray-800 hover:border-sky-400 transition-all hover:-translate-y-1">
+                    <div class="w-14 h-14 bg-sky-500/10 rounded-xl flex items-center justify-center mb-6 text-sky-400 text-2xl">
+                        <i class="fa-solid fa-network-wired"></i>
                     </div>
-                    <h4 class="text-xl font-bold mb-4 text-white">人工智慧技術顧問</h4>
-                    <p class="text-gray-400 mb-6">協助企業有效導入及運用 AI 技術，提升決策品質並創造新商業價值。</p>
-                    <ul class="text-sm text-gray-500 space-y-2">
-                        <li>• AI 導入評估與策略規劃</li>
-                        <li>• 數據分析與洞察</li>
-                        <li>• 機器學習模型建置</li>
-                    </ul>
+                    <h3 class="text-xl font-bold text-white mb-3">工單集中管理</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        同一案件串起負責人員、施作進度、現場紀錄與佐證照片。現場人員與辦公室團隊資訊完全同步，查詢、派工與交接一清二楚。
+                    </p>
                 </div>
 
-                <!-- Service 2 -->
-                <div
-                    class="bg-muxu-primary p-8 rounded-2xl border border-gray-800 hover:border-muxu-accent transition duration-300 hover:transform hover:-translate-y-2 group">
-                    <div
-                        class="w-14 h-14 bg-blue-900/50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-muxu-accent transition duration-300">
-                        <i class="fa-solid fa-laptop-code text-2xl text-muxu-accent group-hover:text-muxu-dark"></i>
+                <!-- 價值 2 -->
+                <div class="bg-muxu-secondary p-8 rounded-2xl border border-gray-800 hover:border-blue-400 transition-all hover:-translate-y-1">
+                    <div class="w-14 h-14 bg-blue-500/10 rounded-xl flex items-center justify-center mb-6 text-blue-400 text-2xl">
+                        <i class="fa-solid fa-file-export"></i>
                     </div>
-                    <h4 class="text-xl font-bold mb-4 text-white">資訊化數位技術服務</h4>
-                    <p class="text-gray-400 mb-6">從基礎數位化到深度轉型，利用數位技術改善經營型態與營運效率。</p>
-                    <ul class="text-sm text-gray-500 space-y-2">
-                        <li>• 雲端整合服務</li>
-                        <li>• 物聯網 (IoT) 解決方案</li>
-                        <li>• 商業流程自動化</li>
-                    </ul>
+                    <h3 class="text-xl font-bold text-white mb-3">報表格式一致</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        主管可依企業既有 Word 範本輸出可編輯文件與防竄改 PDF。系統自動將現場多張照片以每列兩張的美觀格式雙欄排列，免除手動剪貼耗時。
+                    </p>
                 </div>
 
-                <!-- Service 3 -->
-                <div
-                    class="bg-muxu-primary p-8 rounded-2xl border border-gray-800 hover:border-muxu-accent transition duration-300 hover:transform hover:-translate-y-2 group">
-                    <div
-                        class="w-14 h-14 bg-blue-900/50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-muxu-accent transition duration-300">
-                        <i class="fa-solid fa-puzzle-piece text-2xl text-muxu-accent group-hover:text-muxu-dark"></i>
+                <!-- 價值 3 -->
+                <div class="bg-muxu-secondary p-8 rounded-2xl border border-gray-800 hover:border-cyan-400 transition-all hover:-translate-y-1">
+                    <div class="w-14 h-14 bg-cyan-500/10 rounded-xl flex items-center justify-center mb-6 text-cyan-400 text-2xl">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
                     </div>
-                    <h4 class="text-xl font-bold mb-4 text-white">客製化解決方案</h4>
-                    <p class="text-gray-400 mb-6">針對不同產業需求，提供非標準化的專業技術服務，賦能企業脫穎而出。</p>
-                    <ul class="text-sm text-gray-500 space-y-2">
-                        <li>• 跨平台軟體開發</li>
-                        <li>• 產業專屬應用</li>
-                        <li>• 系統整合與維運</li>
-                    </ul>
+                    <h3 class="text-xl font-bold text-white mb-3">系統配合流程</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        不強迫企業改變既有習慣。工單表單欄位、狀態流轉、審核機制、外部系統介接（ERP/CRM/API）皆可依您的業務需求客製擴充。
+                    </p>
                 </div>
 
-                <!-- Service 4 -->
-                <div
-                    class="bg-muxu-primary p-8 rounded-2xl border border-gray-800 hover:border-muxu-accent transition duration-300 hover:transform hover:-translate-y-2 group">
-                    <div
-                        class="w-14 h-14 bg-blue-900/50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-muxu-accent transition duration-300">
-                        <i class="fa-solid fa-rocket text-2xl text-muxu-accent group-hover:text-muxu-dark"></i>
+                <!-- 價值 4 -->
+                <div class="bg-muxu-secondary p-8 rounded-2xl border border-gray-800 hover:border-emerald-400 transition-all hover:-translate-y-1">
+                    <div class="w-14 h-14 bg-emerald-500/10 rounded-xl flex items-center justify-center mb-6 text-emerald-400 text-2xl">
+                        <i class="fa-solid fa-server"></i>
                     </div>
-                    <h4 class="text-xl font-bold mb-4 text-white">AI 落地應用顧問服務</h4>
-                    <p class="text-gray-400 mb-6">從場景評估到系統整合，協助企業把 AI 模型真正導入日常營運，縮短從概念驗證到實際落地的距離。</p>
-                    <ul class="text-sm text-gray-500 space-y-2">
-                        <li>• 應用場景評估與 PoC 驗證</li>
-                        <li>• 模型部署與系統整合</li>
-                        <li>• 導入後成效追蹤與優化</li>
-                    </ul>
+                    <h3 class="text-xl font-bold text-white mb-3">部署方式彈性</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        可依資安要求規劃地端自有機房或雲端獨立隔離部署。專屬應用與資料庫邊界，大幅降低共用雲端環境誤設或漏洞所引發的連帶波及風險。
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Digital Transformation Process (Steps) -->
-    <section id="process" class="section-padding bg-muxu-primary">
+    <!-- 適合的團隊 Section -->
+    <section class="section-padding bg-muxu-secondary border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-5">
+                    <span class="text-sky-400 font-bold tracking-wide uppercase text-sm mb-2 block">Target Teams</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">專為需要現場佐證的<br>專業作業團隊設計</h2>
+                    <p class="text-gray-300 text-base leading-relaxed mb-6">
+                        易派遣特別適合已有固定工單或報表格式，且希望自行掌握資料與部署環境的企業團隊。從指派、抵達到完工報告，一條龍無縫接軌。
+                    </p>
+                    <div class="p-6 bg-muxu-primary rounded-2xl border border-gray-800">
+                        <div class="text-white font-bold text-lg mb-2 flex items-center gap-2">
+                            <i class="fa-solid fa-lightbulb text-amber-400"></i> 建議的第一步
+                        </div>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            您只需提供一份現行使用的工單或報表樣本（Word / Excel / PDF），我們即可安排具體流程展示與部署需求評估訪談。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 grid sm:grid-cols-2 gap-6">
+                    <!-- 團隊 1 -->
+                    <div class="bg-muxu-primary p-6 rounded-2xl border border-gray-800 hover:border-slate-700 transition">
+                        <div class="w-12 h-12 bg-sky-500/20 rounded-xl flex items-center justify-center text-sky-400 mb-4 text-xl">
+                            <i class="fa-solid fa-helmet-safety"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">工程派工與施作</h3>
+                        <p class="text-gray-400 text-sm">
+                            弱電工程、水電消防、裝修施工、空調工程等需要即時掌握現場師傅動態與施作前後對比的工程團隊。
+                        </p>
+                    </div>
+
+                    <!-- 團隊 2 -->
+                    <div class="bg-muxu-primary p-6 rounded-2xl border border-gray-800 hover:border-slate-700 transition">
+                        <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 mb-4 text-xl">
+                            <i class="fa-solid fa-gears"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">設備維護與定檢</h3>
+                        <p class="text-gray-400 text-sm">
+                            電梯機電、工廠產線機台、機房基礎設施、發電機維護等需嚴謹勾稽保養項目並拍照存證的技術團隊。
+                        </p>
+                    </div>
+
+                    <!-- 團隊 3 -->
+                    <div class="bg-muxu-primary p-6 rounded-2xl border border-gray-800 hover:border-slate-700 transition">
+                        <div class="w-12 h-12 bg-teal-500/20 rounded-xl flex items-center justify-center text-teal-400 mb-4 text-xl">
+                            <i class="fa-solid fa-magnifying-glass-location"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">案場巡檢與稽核</h3>
+                        <p class="text-gray-400 text-sm">
+                            物業管理巡檢、工安環保檢查、戶外站點巡邏、資產清點，需留下精準時間、紀錄與多角度影像佐證。
+                        </p>
+                    </div>
+
+                    <!-- 團隊 4 -->
+                    <div class="bg-muxu-primary p-6 rounded-2xl border border-gray-800 hover:border-slate-700 transition">
+                        <div class="w-12 h-12 bg-indigo-500/20 rounded-xl flex items-center justify-center text-indigo-400 mb-4 text-xl">
+                            <i class="fa-solid fa-hand-holding-heart"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">售後維修與到府服務</h3>
+                        <p class="text-gray-400 text-sm">
+                            原廠售後維修、設備保固查驗、故障排除服務，需要直接產出正式完工維修單供業主或客戶留存。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心功能細目 Section -->
+    <section id="features" class="section-padding bg-muxu-primary border-t border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">數位轉型三階段</h2>
-                <p class="text-gray-400">循序漸進，為您的企業注入數位基因</p>
+                <span class="text-sky-400 font-bold tracking-wide uppercase text-sm mb-2 block">System Capabilities</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">系統完整功能架構</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">提供直覺且嚴密的作業體驗，現場人員操作輕便，主管與管理員掌控全局。</p>
             </div>
 
-            <div class="relative">
-                <!-- Connecting Line (Desktop) -->
-                <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-gray-800 -translate-y-1/2 z-0">
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- 模組 1: 現場與工單 -->
+                <div class="bg-muxu-secondary p-8 rounded-2xl border border-gray-800 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-6">
+                            <span class="w-10 h-10 rounded-lg bg-sky-500/20 text-sky-400 flex items-center justify-center font-bold">1</span>
+                            <h3 class="text-2xl font-bold text-white">工單與現場作業</h3>
+                        </div>
+                        <ul class="space-y-4 text-sm text-gray-300">
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-sky-400 mt-1"></i>
+                                <span><strong>工單即時管理：</strong>查詢、篩選、新增與編輯，維護案場、狀態、日期、數量及費用。</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-sky-400 mt-1"></i>
+                                <span><strong>案件人員指派：</strong>明確指派及調派人員，清楚掌握每筆工單的負責對象。</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-sky-400 mt-1"></i>
+                                <span><strong>現場作業紀錄：</strong>新增、修改現場紀錄，支援歷程交接與報表自動彙總。</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-sky-400 mt-1"></i>
+                                <span><strong>多圖照片佐證：</strong>支援多圖批次上傳、預覽、原圖檢視、個別照片說明，支援 JPG、PNG、WebP。</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-800 text-xs text-gray-400 flex items-center gap-2">
+                        <i class="fa-solid fa-mobile text-sky-400"></i> 桌機與手機瀏覽器皆可完美操作
+                    </div>
                 </div>
 
-                <div class="grid md:grid-cols-3 gap-8 relative z-10">
-                    <!-- Step 1 -->
-                    <div
-                        class="bg-muxu-secondary p-8 rounded-xl border border-gray-700 text-center relative hover:border-muxu-accent transition duration-300">
-                        <div
-                            class="w-12 h-12 bg-muxu-accent text-muxu-dark rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-6 border-4 border-muxu-secondary">
-                            1</div>
-                        <h3 class="text-xl font-bold text-white mb-2">數位化</h3>
-                        <p class="text-sm text-muxu-accent mb-4">Digitization</p>
-                        <p class="text-gray-400">將類比資訊轉換為數位格式，建立基礎數據庫，為數據分析奠定基礎。</p>
+                <!-- 模組 2: 報表與範本 -->
+                <div class="bg-muxu-secondary p-8 rounded-2xl border border-gray-800 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-6">
+                            <span class="w-10 h-10 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold">2</span>
+                            <h3 class="text-2xl font-bold text-white">主管報表與範本</h3>
+                        </div>
+                        <ul class="space-y-4 text-sm text-gray-300">
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-blue-400 mt-1"></i>
+                                <span><strong>Word / PDF 一鍵輸出：</strong>系統自動將案件資料（業主、案場、日期、負責人員）自動套版。</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-blue-400 mt-1"></i>
+                                <span><strong>照片雙欄美觀排列：</strong>現場上傳照片以每列兩張規則自動編排至正式報表，無需人工調整排版。</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-blue-400 mt-1"></i>
+                                <span><strong>自訂範本管理：</strong>Admin 可自由下載目前範本調整抬頭、Logo、字型與位置，上傳即可即時生效。</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-blue-400 mt-1"></i>
+                                <span><strong>上傳檢驗機制：</strong>範本更換時自動檢查必要標記結構，確保產製穩定，支援一鍵還原預設。</span>
+                            </li>
+                        </ul>
                     </div>
-
-                    <!-- Step 2 -->
-                    <div
-                        class="bg-muxu-secondary p-8 rounded-xl border border-gray-700 text-center relative hover:border-muxu-accent transition duration-300">
-                        <div
-                            class="w-12 h-12 bg-muxu-accent text-muxu-dark rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-6 border-4 border-muxu-secondary">
-                            2</div>
-                        <h3 class="text-xl font-bold text-white mb-2">數位優化</h3>
-                        <p class="text-sm text-muxu-accent mb-4">Digital Optimization</p>
-                        <p class="text-gray-400">優化現有流程，提升數據可用性與營運效率，減少不必要的人力成本。</p>
+                    <div class="mt-6 pt-4 border-t border-gray-800 text-xs text-gray-400 flex items-center gap-2">
+                        <i class="fa-solid fa-file-circle-check text-blue-400"></i> 保留企業既有官方識別與排版格式
                     </div>
+                </div>
 
-                    <!-- Step 3 -->
-                    <div
-                        class="bg-muxu-secondary p-8 rounded-xl border border-gray-700 text-center relative hover:border-muxu-accent transition duration-300">
-                        <div
-                            class="w-12 h-12 bg-muxu-accent text-muxu-dark rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-6 border-4 border-muxu-secondary">
-                            3</div>
-                        <h3 class="text-xl font-bold text-white mb-2">智慧轉型</h3>
-                        <p class="text-sm text-muxu-accent mb-4">Smart Transformation</p>
-                        <p class="text-gray-400">利用人工智慧技術創造全新商業模式與價值主張，重塑企業核心競爭力。</p>
+                <!-- 模組 3: 權限與資安 -->
+                <div class="bg-muxu-secondary p-8 rounded-2xl border border-gray-800 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-6">
+                            <span class="w-10 h-10 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">3</span>
+                            <h3 class="text-2xl font-bold text-white">角色權限與防護</h3>
+                        </div>
+                        <ul class="space-y-4 text-sm text-gray-300">
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-emerald-400 mt-1"></i>
+                                <span><strong>後端嚴格權限：</strong>Admin（管理員）、Supervisor（主管）、User（現場人員），每次請求重新向資料庫校驗。</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-emerald-400 mt-1"></i>
+                                <span><strong>報表存取保護：</strong>報表檢視與匯出 API 僅對主管角色開放，Admin 不自動濫權取得，角色降權即刻阻斷。</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-emerald-400 mt-1"></i>
+                                <span><strong>內建應用防護：</strong>全面支援 CSRF 防護、樂觀鎖版本覆寫衝突檢查、照片上傳格式驗證與刪除確認。</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-emerald-400 mt-1"></i>
+                                <span><strong>完整系統日誌：</strong>每日記錄權限阻斷、報表匯出與範本更換等重要事件，備查與稽核皆有憑有據。</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-800 text-xs text-gray-400 flex items-center gap-2">
+                        <i class="fa-solid fa-lock text-emerald-400"></i> 符合企業資安治理與責任邊界
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Advantages -->
-    <section id="advantages" class="section-padding bg-muxu-secondary">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-2 gap-12">
-                <div class="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl border border-gray-700">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center">
-                            <i class="fa-solid fa-users-gear text-2xl text-blue-400"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white">專業團隊</h3>
-                    </div>
-                    <ul class="space-y-4 text-gray-300">
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-blue-400 mt-1.5 mr-3 text-sm"></i>
-                            <span>匯聚豐富產業經驗與跨領域技術專家。</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-blue-400 mt-1.5 mr-3 text-sm"></i>
-                            <span>具備機器學習、深度學習等深厚專業知識。</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-blue-400 mt-1.5 mr-3 text-sm"></i>
-                            <span>擁有將技術應用於各行各業的實戰經驗。</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl border border-gray-700">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="w-12 h-12 rounded-full bg-cyan-500/20 flex items-center justify-center">
-                            <i class="fa-solid fa-microchip text-2xl text-cyan-400"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white">技術創新</h3>
-                    </div>
-                    <ul class="space-y-4 text-gray-300">
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-cyan-400 mt-1.5 mr-3 text-sm"></i>
-                            <span>始終走在科技創新的最前沿。</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-cyan-400 mt-1.5 mr-3 text-sm"></i>
-                            <span>整合 AI、雲端運算、物聯網等前瞻技術。</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-cyan-400 mt-1.5 mr-3 text-sm"></i>
-                            <span>打造高效、穩定且具未來性的解決方案。</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Cases Section -->
-    <section id="cases" class="section-padding bg-muxu-primary">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-muxu-accent font-bold tracking-wide uppercase text-sm mb-2">成功案例 Success Cases</h2>
-                <h3 class="text-3xl md:text-4xl font-bold text-white">技術落地，創造價值</h3>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Case 1 -->
-                <a href="/mpi">
-                    <div class="group relative overflow-hidden rounded-xl bg-gray-800">
-                        <img src="/images/promag.png" alt="非破壞檢測" loading="lazy"
-                            class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500 opacity-80 group-hover:opacity-100"
-                            onerror="this.src='https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90">
-                        </div>
-                        <div class="absolute bottom-0 left-0 p-6">
-                            <h4 class="text-lg font-bold text-white mb-1">汽車車材</h4>
-                            <p class="text-muxu-accent text-sm">非破壞檢測</p>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Case 2 -->
-                <a href="/csi">
-                <div class="group relative overflow-hidden rounded-xl bg-gray-800">
-                    <img src="/images/drug.jpg" alt="AI圖像識別" loading="lazy" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500 opacity-80 group-hover:opacity-100"
-                        onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90">
-                    </div>
-                    <div class="absolute bottom-0 left-0 p-6">
-                        <h4 class="text-lg font-bold text-white mb-1">AI 圖像識別</h4>
-                        <p class="text-muxu-accent text-sm">毒品快搜平台</p>
-                    </div>
-                </div>
-                </a>
-                
-                <!-- Case 3 -->
-                <a href="/orchid">
-                <div class="group relative overflow-hidden rounded-xl bg-gray-800">
-                    <img src="/images/orchid.jpg" alt="智慧農業" loading="lazy"
-                        class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500 opacity-80 group-hover:opacity-100"
-                        onerror="this.src='https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90">
-                    </div>
-                    <div class="absolute bottom-0 left-0 p-6">
-                        <h4 class="text-lg font-bold text-white mb-1">智慧農業</h4>
-                        <p class="text-muxu-accent text-sm">蝴蝶蘭品種權管理</p>
-                    </div>
-                </div>
-                </a>
-                
-                <!-- Case 4 -->
-                <a href="/energy">
-                <div class="group relative overflow-hidden rounded-xl bg-gray-800">
-                    <img src="/images/energy.png" alt="能源管理" loading="lazy"
-                        class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500 opacity-80 group-hover:opacity-100"
-                        onerror="this.src='https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80'">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90">
-                    </div>
-                    <div class="absolute bottom-0 left-0 p-6">
-                        <h4 class="text-lg font-bold text-white mb-1">能源管理</h4>
-                        <p class="text-muxu-accent text-sm">工業廠區用電預測</p>
-                    </div>
-                </div>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Free Software download Section -->
-    <section id="download" class="section-padding bg-muxu-secondary">
+    <!-- 部署方案比較 Section -->
+    <section id="deployment" class="section-padding bg-muxu-secondary border-t border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-muxu-accent font-bold tracking-wide uppercase text-sm mb-2">免費軟體 Free Software</h2>
-                <h3 class="text-3xl md:text-4xl font-bold text-white mb-4">VulnSage 弱點掃描工具</h3>
-                <p class="text-gray-400 max-w-3xl mx-auto">VulnSage 協助團隊以非侵入式方式檢視 Web 服務安全狀態，整合公開弱點資料庫、本地 SQLite 情資庫、HTTPS/TLS 主動檢查、產品指紋辨識、OWASP 風險對照與修補建議，讓弱點掃描流程更透明、可重現、可稽核。</p>
+                <span class="text-sky-400 font-bold tracking-wide uppercase text-sm mb-2 block">Deployment Architecture</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">地端部署 vs. 雲端獨立部署</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">企業可依資料治理政策、網路架構與維運能力，自由選擇最適切的部署模式。</p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-12">
-                <div class="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl border border-gray-700">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center">
-                            <i class="fa-solid fa-users-gear text-2xl text-blue-400"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white">多來源弱點情資整合</h3>
-                    </div>
-                    <ul class="space-y-4 text-gray-300">
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-blue-400 mt-1.5 mr-3 text-sm"></i>
-                            <span>彙整 NVD、CISA Known Exploited Vulnerabilities、OSV、GitHub Advisory Database 與 CVE List V5，將公開弱點資料彙整成為弱點情資。</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-blue-400 mt-1.5 mr-3 text-sm"></i>
-                            <span>弱點資料、CPE 條件、套件版本範圍、KEV 標記與掃描規則比對、可重現報告與內部稽核流程。</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-blue-400 mt-1.5 mr-3 text-sm"></i>
-                            <span>包含 CPE 產品版本比對、套件版本範圍比對，以及 HTTPS/TLS/憑證/加密相關的安全探測規則。</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl border border-gray-700">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="w-12 h-12 rounded-full bg-cyan-500/20 flex items-center justify-center">
-                            <i class="fa-solid fa-microchip text-2xl text-cyan-400"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white">適用情境</h3>
-                    </div>
-                    <ul class="space-y-4 text-gray-300">
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-cyan-400 mt-1.5 mr-3 text-sm"></i>
-                            <span>企業資安盤點：定期掃描公司已授權 Web 服務，追蹤公開弱點、CISA KEV 高風險項目與 HTTPS/TLS 組態風險。</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-cyan-400 mt-1.5 mr-3 text-sm"></i>
-                            <span>維運與修補追蹤：針對已知產品版本、Web server、框架或開源套件版本，快速比對本地弱點資料庫並取得修補建議。</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-cyan-400 mt-1.5 mr-3 text-sm"></i>
-                            <span>稽核與合規佐證：保留同步紀錄、掃描紀錄、資料來源說明與報告結果，支援內部稽核、弱點管理流程與修補驗證。</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-cyan-400 mt-1.5 mr-3 text-sm"></i>
-                            <span>WebUI、設定檔、批次啟動與 log 機制完整，適合日常維運流程</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <br>
-            <div
-                class="bg-muxu-primary p-8 rounded-2xl border border-gray-800 shadow-2xl flex flex-col md:flex-row justify-around items-center gap-8">
-                <div class="flex flex-col items-center gap-3">
-                    <div
-                        class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-muxu-accent text-xl">
-                        <i class="fa-solid fa-link"></i>
-                    </div>
-                    <span class="text-gray-300"><a href="https://drive.google.com/uc?export=download&id=1-IImrT5hsc4PWiSmpEN8GNS7AEfCW6l8" rel="noopener noreferrer">VulnSage-0.2.0-windows-x64.zip</a></span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section-padding bg-gradient-to-b from-muxu-secondary to-muxu-dark">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-8">準備好開始您的數位轉型之旅了嗎？</h2>
-            <p class="text-xl text-gray-300 mb-12">期待成為您數位轉型路上最值得信賴的夥伴，共創輝煌的數位未來。</p>
-
-            <div
-                class="bg-muxu-primary p-8 rounded-2xl border border-gray-800 shadow-2xl flex flex-col md:flex-row justify-around items-center gap-8">
-                <div class="flex flex-col items-center gap-3">
-                    <div
-                        class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-muxu-accent text-xl">
-                        <i class="fa-solid fa-phone"></i>
-                    </div>
-                    <span class="text-gray-300">(02) 6609-3166</span>
-                </div>
-
-                <div class="flex flex-col items-center gap-3">
-                    <div
-                        class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-muxu-accent text-xl">
-                        <i class="fa-solid fa-envelope"></i>
-                    </div>
-                    <span class="text-gray-300">sales@muxu.com.tw</span>
-                </div>
-
-                <div class="flex flex-col items-center gap-3">
-                    <div
-                        class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-muxu-accent text-xl">
-                        <i class="fa-solid fa-globe"></i>
-                    </div>
-                    <span class="text-gray-300">www.muxu.com.tw</span>
-                </div>
-
-                <div class="flex flex-col items-center gap-3">
-                    <div
-                        class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-muxu-accent text-xl">
-                        <i class="fa-solid fa-link"></i>
-                    </div>
-                    <span class="text-gray-300"><a href="https://lin.ee/pWGID3I">沐旭科技Line@官方帳號</a></span>
-                </div>
+            <!-- 比較表格 -->
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse bg-muxu-primary rounded-2xl overflow-hidden border border-gray-800">
+                    <thead>
+                        <tr class="bg-slate-900 border-b border-gray-800 text-white">
+                            <th class="p-5 font-bold w-1/4">比較維度</th>
+                            <th class="p-5 font-bold w-3/8 text-sky-400"><i class="fa-solid fa-building mr-2"></i>地端私有部署 (On-Premises)</th>
+                            <th class="p-5 font-bold w-3/8 text-blue-400"><i class="fa-solid fa-cloud mr-2"></i>雲端獨立部署 (Dedicated Cloud)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-800 text-sm text-gray-300">
+                        <tr>
+                            <td class="p-5 font-semibold text-white bg-slate-900/40">運作位置</td>
+                            <td class="p-5">企業自有機房或指定實體主機環境</td>
+                            <td class="p-5">企業自有或約定專屬雲端資源邊界</td>
+                        </tr>
+                        <tr>
+                            <td class="p-5 font-semibold text-white bg-slate-900/40">資料位置</td>
+                            <td class="p-5">完全留在企業指定內部伺服器，資料落地保障</td>
+                            <td class="p-5">存於約定雲端區域及專屬資料庫與儲存服務</td>
+                        </tr>
+                        <tr>
+                            <td class="p-5 font-semibold text-white bg-slate-900/40">網路存取方式</td>
+                            <td class="p-5">可規劃純內網、企業 VPN 或受控對外反向代理</td>
+                            <td class="p-5">可規劃專屬私有網路 (VPC)、VPN 與受控入口</td>
+                        </tr>
+                        <tr>
+                            <td class="p-5 font-semibold text-white bg-slate-900/40">管理與維運責任</td>
+                            <td class="p-5">企業 IT 維運或委託沐旭科技維護，責任依約明確約定</td>
+                            <td class="p-5">企業與沐旭服務團隊依分工矩陣共同管理</td>
+                        </tr>
+                        <tr>
+                            <td class="p-5 font-semibold text-white bg-slate-900/40">適合需求情境</td>
+                            <td class="p-5">
+                                <span class="inline-block px-2.5 py-1 rounded bg-sky-500/10 text-sky-300 text-xs font-semibold mr-1">內網使用</span>
+                                <span class="inline-block px-2.5 py-1 rounded bg-sky-500/10 text-sky-300 text-xs font-semibold mr-1">法規資料落地</span>
+                                <span class="inline-block px-2.5 py-1 rounded bg-sky-500/10 text-sky-300 text-xs font-semibold">自備機房</span>
+                            </td>
+                            <td class="p-5">
+                                <span class="inline-block px-2.5 py-1 rounded bg-blue-500/10 text-blue-300 text-xs font-semibold mr-1">跨據點多案場</span>
+                                <span class="inline-block px-2.5 py-1 rounded bg-blue-500/10 text-blue-300 text-xs font-semibold mr-1">獨立隔離環境</span>
+                                <span class="inline-block px-2.5 py-1 rounded bg-blue-500/10 text-blue-300 text-xs font-semibold">彈性擴充</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="p-5 font-semibold text-white bg-slate-900/40">安全防禦優勢</td>
+                            <td class="p-5">隔絕外網直接曝險，完全由內網政策控制</td>
+                            <td class="p-5 text-emerald-400 font-semibold">獨立應用與獨立資料庫，杜絕多租戶共用環境之誤設與連帶入侵風險</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
-            <!-- Simple Form -->
-            <form class="mt-12 max-w-lg mx-auto space-y-4 text-left" action="mailto:sales@muxu.com.tw" method="post"
-                enctype="text/plain">
+            <!-- 資安提醒卡片 -->
+            <div class="mt-8 p-6 bg-slate-900/80 rounded-2xl border border-slate-800 text-xs sm:text-sm text-gray-400 leading-relaxed flex items-start gap-4">
+                <i class="fa-solid fa-shield text-sky-400 text-xl mt-0.5"></i>
                 <div>
-                    <label for="email" class="block text-sm font-medium text-gray-400 mb-1">聯絡信箱</label>
-                    <input type="email" id="email"
-                        class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-muxu-accent transition"
-                        placeholder="your@email.com">
+                    <strong class="text-white block mb-1">關於獨立部署架構之安全說明：</strong>
+                    當企業與其他客戶共用同一應用或資料庫時，隔離設計若出現瑕疵可能擴大影響。易派遣獨立部署方案規劃專屬應用邊界、獨立資料庫與圖檔儲存權限，大幅降低此類連帶相依。各項資源隔離範圍均明確載明於提案與驗收文件。
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 導入四部曲 Section -->
+    <section class="section-padding bg-muxu-primary border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-sky-400 font-bold tracking-wide uppercase text-sm mb-2 block">Implementation</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">透明標準化的導入流程</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">循序漸進，由資深工程與顧問團隊協助企業順暢上線。</p>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-6">
+                <!-- Step 1 -->
+                <div class="bg-muxu-secondary p-6 rounded-2xl border border-gray-800 relative">
+                    <div class="text-sky-400 font-black text-4xl mb-4 font-mono">01</div>
+                    <h3 class="text-xl font-bold text-white mb-2">需求訪談與範例展示</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        提供現用工單與報表樣本，選定一段實際流程作為展示及驗收情境，快速確認適用性。
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-muxu-secondary p-6 rounded-2xl border border-gray-800 relative">
+                    <div class="text-blue-400 font-black text-4xl mb-4 font-mono">02</div>
+                    <h3 class="text-xl font-bold text-white mb-2">範圍與部署規劃</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        確認現有功能、客製項目（表單/簽核/ERP介接）、資料庫邊界、安全要求與維運分工。
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-muxu-secondary p-6 rounded-2xl border border-gray-800 relative">
+                    <div class="text-cyan-400 font-black text-4xl mb-4 font-mono">03</div>
+                    <h3 class="text-xl font-bold text-white mb-2">建置與使用者驗收</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        在獨立測試環境驗證權限、派工、照片上傳與 Word/PDF 報表產出，並進行復原驗證。
+                    </p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="bg-muxu-secondary p-6 rounded-2xl border border-gray-800 relative">
+                    <div class="text-emerald-400 font-black text-4xl mb-4 font-mono">04</div>
+                    <h3 class="text-xl font-bold text-white mb-2">上線與後續維護</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        完成系統操作培訓、正式切換上線，並依合約安排持續安全性修補、技術支援與功能變更。
+                    </p>
+                </div>
+            </div>
+
+            <!-- 呼籲預約 Banner -->
+            <div class="mt-14 p-8 md:p-10 rounded-3xl bg-gradient-to-r from-sky-900/40 via-blue-900/40 to-slate-900/60 border border-sky-500/30 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+                <div>
+                    <h3 class="text-2xl md:text-3xl font-bold text-white mb-2">想要了解易派遣如何協助您的團隊？</h3>
+                    <p class="text-gray-300 text-sm sm:text-base">提供一份現用工單與報表樣本，即可安排線上流程展示與需求評估。</p>
                 </div>
                 <div>
-                    <label for="message" class="block text-sm font-medium text-gray-400 mb-1">諮詢內容</label>
-                    <textarea id="message" rows="4"
-                        class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-muxu-accent transition"
-                        placeholder="請告訴我們您的需求..."></textarea>
+                    <a href="#contact"
+                        class="inline-flex items-center gap-2 px-8 py-4 bg-sky-400 hover:bg-sky-300 text-slate-950 font-bold rounded-xl text-base transition-all shadow-lg shadow-sky-400/20 whitespace-nowrap">
+                        <i class="fa-solid fa-headset"></i>
+                        <span>立即聯絡諮詢</span>
+                    </a>
                 </div>
-                <button type="submit"
-                    class="w-full bg-muxu-accent text-muxu-dark font-bold py-3 rounded-lg hover:bg-muxu-highlight transition duration-300">
-                    發送訊息
-                </button>
-            </form>
+            </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-black py-8 border-t border-gray-900">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <p class="text-gray-500 text-sm">
-                &copy; 2026 沐旭科技有限公司 Muxu Technology Co., Ltd. All Rights Reserved.
-            </p>
+    <!-- 永遠保留聯絡方式與 Footer -->
+    
+    <!-- 常見問答 FAQ Section (增強 SEO 豐富摘要) -->
+    <section id="faq" class="section-padding bg-muxu-secondary border-t border-gray-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-14">
+                <span class="text-sky-400 font-bold tracking-wide uppercase text-sm mb-2 block">FAQ</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">常見問題解答</h2>
+                <p class="text-gray-400">關於易派遣的功能、客製化與部署模式之常見疑問。</p>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ 1 -->
+                <details class="group bg-muxu-primary p-6 rounded-2xl border border-gray-800 open:border-sky-500/50 transition-all">
+                    <summary class="flex justify-between items-center cursor-pointer list-none font-bold text-lg text-white">
+                        <span>1. 易派遣支援哪些作業系統與裝置？現場師傅需要安裝 App 嗎？</span>
+                        <span class="text-sky-400 transition group-open:rotate-180">
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </span>
+                    </summary>
+                    <p class="mt-4 text-gray-300 text-sm leading-relaxed border-t border-gray-800/80 pt-4">
+                        不需要強制安裝額外 App！易派遣採用響應式 Web 介面，現場人員使用 iOS / Android 手機或平板瀏覽器即可直接登入、回報紀錄與上傳照片；辦公室主管與管理員則使用電腦瀏覽器進行工單審核與報表產出。
+                    </p>
+                </details>
+
+                <!-- FAQ 2 -->
+                <details class="group bg-muxu-primary p-6 rounded-2xl border border-gray-800 open:border-sky-500/50 transition-all">
+                    <summary class="flex justify-between items-center cursor-pointer list-none font-bold text-lg text-white">
+                        <span>2. 主管匯出的報表能否客製為我們公司既有的 Word / PDF 驗收格式？</span>
+                        <span class="text-sky-400 transition group-open:rotate-180">
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </span>
+                    </summary>
+                    <p class="mt-4 text-gray-300 text-sm leading-relaxed border-t border-gray-800/80 pt-4">
+                        可以！易派遣支援企業自訂範本。系統會將工單資料（業主、案場、日期、施作項目、人員）自動填入指定標記，並將現場照片以每列兩張規則自動雙欄排版。Admin 管理員可隨時下載範本調整抬頭、Logo、字型再上傳套用。
+                    </p>
+                </details>
+
+                <!-- FAQ 3 -->
+                <details class="group bg-muxu-primary p-6 rounded-2xl border border-gray-800 open:border-sky-500/50 transition-all">
+                    <summary class="flex justify-between items-center cursor-pointer list-none font-bold text-lg text-white">
+                        <span>3. 「地端私有部署」與「雲端獨立部署」有何差異？如何選擇？</span>
+                        <span class="text-sky-400 transition group-open:rotate-180">
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </span>
+                    </summary>
+                    <p class="mt-4 text-gray-300 text-sm leading-relaxed border-t border-gray-800/80 pt-4">
+                        「地端私有部署」將系統完全架設於企業自有機房或內網，適合對資料落地、法規合規有嚴格要求的企業；「雲端獨立部署」則為企業開闢專屬獨立的雲端應用與資料庫邊界，隔絕外部多租戶共用環境的連帶資安風險，並享有跨區彈性擴充優勢。
+                    </p>
+                </details>
+
+                <!-- FAQ 4 -->
+                <details class="group bg-muxu-primary p-6 rounded-2xl border border-gray-800 open:border-sky-500/50 transition-all">
+                    <summary class="flex justify-between items-center cursor-pointer list-none font-bold text-lg text-white">
+                        <span>4. 能否介接企業現有的 ERP、CRM 或外部身分認證 (SSO)？</span>
+                        <span class="text-sky-400 transition group-open:rotate-180">
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </span>
+                    </summary>
+                    <p class="mt-4 text-gray-300 text-sm leading-relaxed border-t border-gray-800/80 pt-4">
+                        可以。沐旭科技團隊擁有深厚系統整合顧問經驗，可依專案需求客製工單欄位、審批流程、API 介接、既有資料庫歷史轉移、以及企業級 SSO / MFA 雙因子身分驗證整合。
+                    </p>
+                </details>
+
+                <!-- FAQ 5 -->
+                <details class="group bg-muxu-primary p-6 rounded-2xl border border-gray-800 open:border-sky-500/50 transition-all">
+                    <summary class="flex justify-between items-center cursor-pointer list-none font-bold text-lg text-white">
+                        <span>5. 如何開始第一步評估？需要準備什麼資料？</span>
+                        <span class="text-sky-400 transition group-open:rotate-180">
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </span>
+                    </summary>
+                    <p class="mt-4 text-gray-300 text-sm leading-relaxed border-t border-gray-800/80 pt-4">
+                        您只需提供一份現行使用的工單或驗收報表樣本（Word、Excel 或 PDF），沐旭科技顧問即可為您安排一場針對該情境的現場作業與報表匯出實機展示，並評估最符合預算的部署方案。
+                    </p>
+                </details>
+            </div>
         </div>
-    </footer>
+    </section>
 
-    <!-- Scripts -->
-    <script>
-        // Mobile Menu Toggle
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
-
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                menu.classList.add('hidden');
-            });
-        });
-
-        // Navbar Scroll Effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('shadow-lg');
-                navbar.classList.replace('bg-opacity-90', 'bg-opacity-100');
-            } else {
-                navbar.classList.remove('shadow-lg');
-                navbar.classList.replace('bg-opacity-100', 'bg-opacity-90');
+    <!-- FAQPage Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "易派遣支援哪些作業系統與裝置？現場師傅需要安裝 App 嗎？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "不需要強制安裝額外 App！易派遣採用響應式 Web 介面，現場人員使用 iOS / Android 手機或平板瀏覽器即可直接登入、回報紀錄與上傳照片；主管則使用電腦瀏覽器進行審核與報表產出。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "主管匯出的報表能否客製為我們公司既有的 Word / PDF 驗收格式？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "可以！易派遣支援企業自訂範本。系統會將工單資料自動填入指定標記，並將現場照片以每列兩張規則自動雙欄排版。Admin 管理員可隨時下載範本調整抬頭、Logo、字型再上傳套用。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "「地端私有部署」與「雲端獨立部署」有何差異？如何選擇？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "地端私有部署將系統架設於企業自有機房，適合法規資料落地要求；雲端獨立部署則規劃專屬獨立雲端應用與資料庫邊界，隔絕共用多租戶的連帶資安風險，並享有跨據點彈性擴充優勢。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "能否介接企業現有的 ERP、CRM 或外部身分認證 (SSO)？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "可以。沐旭科技團隊擁有深厚系統整合經驗，可依專案需求客製工單欄位、流程簽核、API 介接與企業級 SSO/MFA 整合。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "如何開始第一步評估？需要準備什麼資料？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "您只需提供一份現行使用的工單或驗收報表樣本，沐旭科技顧問即可為您安排專屬情境實機展示與導入評估。"
+                }
             }
-        });
+        ]
+    }
     </script>
+
+    {% include contact_footer.html %}
+
 </body>
 
 </html>

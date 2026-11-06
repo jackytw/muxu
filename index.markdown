@@ -1,7 +1,6 @@
 ---
-# Feel free to add content and custom Front Matter to this file.
-# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-
-layout: one
-image: /images/1.PNG  # TODO: 建議改為專屬 1200x630 的社群預覽圖
+layout: home
+title: 易派遣 EasyDispatch - 工單與現場作業管理系統 | 沐旭科技
+description: 易派遣：整合工單派工、現場紀錄、照片佐證與主管報表，把工作安排、現場紀錄與正式文件放在同一套流程中。支援企業既有流程客製、地端私有化與雲端獨立部署。
+image: /images/epatch/epatch_hero.png
 ---

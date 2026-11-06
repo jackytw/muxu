@@ -1,0 +1,67 @@
+<!-- Navigation -->
+<nav id="navbar"
+    class="fixed w-full z-50 transition-all duration-300 bg-opacity-95 backdrop-blur-md bg-muxu-primary border-b border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+            <!-- Logo -->
+            <a href="/" class="flex-shrink-0 flex items-center gap-2 cursor-pointer">
+                <div
+                    class="w-10 h-10 bg-muxu-accent rounded-lg flex items-center justify-center text-muxu-dark font-bold text-xl">
+                    M</div>
+                <div class="flex flex-col">
+                    <span class="font-bold text-xl tracking-wider text-white leading-tight">沐旭科技</span>
+                    <span class="text-xs text-muxu-muted tracking-wide">Muxu Technology</span>
+                </div>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:block">
+                <div class="ml-10 flex items-center space-x-6">
+                    <a href="/"
+                        class="hover:text-muxu-accent transition-colors px-3 py-2 rounded-md text-sm font-medium {% if page.url == '/' %}text-muxu-accent font-bold{% else %}text-gray-300{% endif %}">
+                        <i class="fa-solid fa-clipboard-check mr-1.5 text-xs text-muxu-accent"></i>易派遣系統
+                    </a>
+                    <a href="/about/"
+                        class="hover:text-muxu-accent transition-colors px-3 py-2 rounded-md text-sm font-medium {% if page.url == '/about/' %}text-muxu-accent font-bold{% else %}text-gray-300{% endif %}">
+                        關於我們
+                    </a>
+                    <a href="/download/"
+                        class="hover:text-muxu-accent transition-colors px-3 py-2 rounded-md text-sm font-medium {% if page.url == '/download/' %}text-muxu-accent font-bold{% else %}text-gray-300{% endif %}">
+                        軟體下載
+                    </a>
+                    <a href="#contact"
+                        class="bg-muxu-accent text-muxu-dark hover:bg-muxu-highlight px-5 py-2 rounded-full text-sm font-bold transition-all shadow-md shadow-muxu-accent/20">
+                        <i class="fa-solid fa-headset mr-1.5"></i>聯絡我們
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mobile menu button -->
+            <div class="-mr-2 flex md:hidden">
+                <button id="mobile-menu-btn" type="button"
+                    class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none"
+                    aria-label="選單開關">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Panel -->
+    <div id="mobile-menu" class="hidden md:hidden bg-muxu-secondary border-b border-gray-700">
+        <div class="px-3 pt-2 pb-4 space-y-2">
+            <a href="/" class="block hover:bg-gray-700 px-3 py-2 rounded-md text-base font-medium {% if page.url == '/' %}text-muxu-accent font-bold{% else %}text-gray-300{% endif %}">
+                <i class="fa-solid fa-clipboard-check mr-2 text-muxu-accent"></i>易派遣系統
+            </a>
+            <a href="/about/" class="block hover:bg-gray-700 px-3 py-2 rounded-md text-base font-medium {% if page.url == '/about/' %}text-muxu-accent font-bold{% else %}text-gray-300{% endif %}">
+                關於我們
+            </a>
+            <a href="/download/" class="block hover:bg-gray-700 px-3 py-2 rounded-md text-base font-medium {% if page.url == '/download/' %}text-muxu-accent font-bold{% else %}text-gray-300{% endif %}">
+                軟體下載
+            </a>
+            <a href="#contact" class="block text-center bg-muxu-accent text-muxu-dark font-bold px-3 py-2.5 rounded-lg text-base mt-2">
+                <i class="fa-solid fa-headset mr-2"></i>聯絡我們
+            </a>
+        </div>
+    </div>
+</nav>

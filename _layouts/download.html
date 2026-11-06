@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+
+<head>
+    {% include head.html %}
+</head>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-111JWF4BJ9');
+</script>
+
+<body class="font-sans antialiased selection:bg-muxu-accent selection:text-muxu-dark">
+
+    {% include navbar.html %}
+
+    <!-- Page Header -->
+    <header class="relative pt-36 pb-20 hero-bg text-center px-4 border-b border-gray-800">
+        <div class="relative z-10 max-w-4xl mx-auto">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-sm font-semibold mb-4">
+                <i class="fa-solid fa-download mr-1.5"></i> 軟體下載專區 Download Center
+            </span>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 tracking-tight text-white">
+                實用資安與維運軟體工具
+            </h1>
+            <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto font-light leading-relaxed">
+                沐旭科技自主研發與精選工具，協助企業以輕量、非侵入式方式提升系統防禦與維運效率。
+            </p>
+        </div>
+    </header>
+
+    <!-- Download Section -->
+    <section id="download" class="section-padding bg-muxu-primary">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Software Card Main -->
+            <div class="bg-muxu-secondary rounded-3xl border border-gray-800 p-8 md:p-12 shadow-2xl mb-12">
+                <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 mb-8 border-b border-gray-700/60 pb-8">
+                    <div>
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="px-3 py-1 bg-muxu-accent/10 border border-muxu-accent/30 text-muxu-accent text-xs font-semibold rounded-full">
+                                免費版本 v0.2.0
+                            </span>
+                            <span class="text-xs text-gray-400">適用系統：Windows x64</span>
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-bold text-white flex items-center gap-3">
+                            <i class="fa-solid fa-shield-halved text-muxu-accent"></i> VulnSage 弱點掃描工具
+                        </h2>
+                    </div>
+                    <div>
+                        <a href="https://drive.google.com/uc?export=download&id=1-IImrT5hsc4PWiSmpEN8GNS7AEfCW6l8"
+                            target="_blank" rel="noopener noreferrer"
+                            class="inline-flex items-center gap-3 px-8 py-4 bg-muxu-accent text-muxu-dark rounded-xl font-bold text-lg hover:bg-muxu-highlight transition-all shadow-lg shadow-muxu-accent/20">
+                            <i class="fa-solid fa-download text-xl"></i>
+                            <span>立即下載 (zip)</span>
+                        </a>
+                    </div>
+                </div>
+
+                <p class="text-gray-300 text-lg leading-relaxed mb-8">
+                    VulnSage 協助團隊以<strong class="text-white">非侵入式</strong>方式檢視 Web 服務安全狀態，整合公開弱點資料庫、本地 SQLite 情資庫、HTTPS/TLS 主動檢查、產品指紋辨識、OWASP 風險對照與修補建議，讓弱點掃描流程更透明、可重現、可稽核。
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <!-- Feature 1 -->
+                    <div class="bg-gray-800/60 p-6 rounded-2xl border border-gray-700/60">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-400">
+                                <i class="fa-solid fa-database text-lg"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white">多來源弱點情資整合</h3>
+                        </div>
+                        <ul class="space-y-3 text-sm text-gray-300">
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-blue-400 mt-1"></i>
+                                <span>彙整 NVD、CISA Known Exploited Vulnerabilities (KEV)、OSV、GitHub Advisory Database 與 CVE List V5。</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-blue-400 mt-1"></i>
+                                <span>弱點資料、CPE 條件、套件版本範圍、KEV 標記與掃描規則比對，利於可重現報告與內部稽核流程。</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-blue-400 mt-1"></i>
+                                <span>支援 CPE 產品版本比對，以及 HTTPS/TLS/憑證/加密演算法等關鍵安全探測規則。</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="bg-gray-800/60 p-6 rounded-2xl border border-gray-700/60">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-lg bg-cyan-500/20 flex items-center justify-center text-cyan-400">
+                                <i class="fa-solid fa-laptop-code text-lg"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white">主要適用情境</h3>
+                        </div>
+                        <ul class="space-y-3 text-sm text-gray-300">
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-cyan-400 mt-1"></i>
+                                <span><strong>企業資安盤點：</strong>定期掃描公司已授權之 Web 服務，主動追蹤已知弱點與組態風險。</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-cyan-400 mt-1"></i>
+                                <span><strong>維運與修補追蹤：</strong>比對本地弱點資料庫，快速取得修補建議與 CVE 參照資料。</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-cyan-400 mt-1"></i>
+                                <span><strong>稽核合規佐證：</strong>保留同步日誌與掃描紀錄，支援內部稽核與合規性驗證。</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Download File info -->
+                <div class="bg-muxu-primary p-6 rounded-2xl border border-gray-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-gray-800 rounded-xl flex items-center justify-center text-muxu-accent text-2xl">
+                            <i class="fa-solid fa-file-zipper"></i>
+                        </div>
+                        <div>
+                            <div class="text-white font-bold">VulnSage-0.2.0-windows-x64.zip</div>
+                            <div class="text-xs text-gray-400">免安裝綠色版 ‧ 解壓縮即可執行 WebUI 服務</div>
+                        </div>
+                    </div>
+                    <a href="https://drive.google.com/uc?export=download&id=1-IImrT5hsc4PWiSmpEN8GNS7AEfCW6l8"
+                        target="_blank" rel="noopener noreferrer"
+                        class="px-6 py-2.5 bg-gray-800 hover:bg-muxu-accent hover:text-muxu-dark text-white rounded-lg text-sm font-semibold transition-all">
+                        <i class="fa-solid fa-cloud-arrow-down mr-1.5"></i>前往下載
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% include contact_footer.html %}
+
+</body>
+
+</html>
